@@ -1,0 +1,94 @@
+<div class="card m-3">
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-12" *ngIf="Alteracao">
+          {{this.Alteracao}}
+        </div>
+        <div class="form-group col-12">
+          <label>Nome:</label>
+          <input type="text" formControlName="Nome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Nome.errors }" />
+          <div *ngIf="submitted && f.Nome.errors" class="invalid-feedback">
+            <div *ngIf="f.Nome.errors.required">O Nome é requerido</div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label>Responsável:</label>
+          <select formControlName="Pessoa" class="form-control">
+            <option disabled>Selecionar Responsável</option>
+            <option *ngFor="let pessoa of Pessoas" value="{{pessoa.id}}">{{pessoa.nome}}</option>
+          </select>
+          <div *ngIf="submitted && f.Pessoa.errors" class="invalid-feedback">
+            <div *ngIf="f.Pessoa.errors.required">A pessoa é requerida</div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label>Gênero:</label>
+          <select formControlName="Genero" class="form-control">
+            <option disabled>Selecionar Gênero</option>
+            <option value="1">Masculino</option>
+            <option value="2">Feminino</option>
+          </select>
+          <div *ngIf="submitted && f.Genero.errors" class="invalid-feedback">
+            <div *ngIf="f.Genero.errors.required">O Gênero é requerido</div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label>Tipo de Animal</label>
+          <select formControlName="Tipo" class="form-control">
+            <option disabled>Selecionar o Tipo de Animal</option>
+            <option *ngFor="let tipo of Tipos" value="{{tipo.id}}">{{tipo.nome}}</option>
+          </select>
+          <div *ngIf="submitted && f.Tipo.errors" class="invalid-feedback">
+            <div *ngIf="f.Tipo.errors.required">O Tipo de animal é requerido</div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label>Raça do Animal</label>
+          <select formControlName="Raca" class="form-control">
+            <option disabled>Selecionar o Tipo de Raça</option>
+            <option *ngFor="let raca of Racas" value="{{raca.id}}">{{raca.nome}}</option>
+          </select>
+          <div *ngIf="submitted && f.Tipo.errors" class="invalid-feedback">
+            <div *ngIf="f.Tipo.errors.required">O Tipo de animal é requerido</div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label>Observação:</label>
+          <textarea formControlName="Obs" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Obs.errors }"></textarea>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary mr-1">Salvar</button>
+        <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpar Campos</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="float-right">
+  <h1 id="TableEventos" *ngIf="Eventos">Eventos</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="Eventos">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Status</th>
+        <th>Atendente</th>
+        <th>Animal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evento of Eventos">
+        <td>{{ evento.nome }}</td>
+        <td>{{ evento.status }}</td>
+        <td>{{ evento.atendente }}</td>
+        <td>{{ evento.animal }}</td>
+        <td>
+          <a (click)="alert(evento.id)" class="btn btn-primary">Detalhes</a>
+          <a class="btn btn-primary">Remover</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

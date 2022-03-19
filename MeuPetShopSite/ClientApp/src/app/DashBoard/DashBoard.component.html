@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+(function(w,d){!function(e,t,r,a,s){e[r]=e[r]||{},e[r].executed=[],e.zaraz={deferred:[]};var n=t.getElementsByTagName("title")[0];e[r].c=t.cookie,n&&(e[r].t=t.getElementsByTagName("title")[0].text),e[r].w=e.screen.width,e[r].h=e.screen.height,e[r].j=e.innerHeight,e[r].e=e.innerWidth,e[r].l=e.location.href,e[r].r=t.referrer,e[r].k=e.screen.colorDepth,e[r].n=t.characterSet,e[r].o=(new Date).getTimezoneOffset(),//
+e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([t,r]),e[s].push({"zaraz.start":(new Date).getTime()});var i=t.getElementsByTagName(a)[0],o=t.createElement(a);o.defer=!0,o.src="/cdn-cgi/zaraz/s.js?"+new URLSearchParams(e[r]).toString(),i.parentNode.insertBefore(o,i)}(w,d,"zarazData","script","dataLayer");})(window,document);</script>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar">
+        <div class="custom-menu">
+          <button type="button" (click)="ExpandDash()" id="sidebarCollapse" class="btn btn-primary">
+          </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+          <div class="user-logo">
+            <!--<div class="img" style="background-image: url(images/logo.jpg);">Imagem do usuário</div>-->
+            <h3>Usuário</h3>
+          </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+          <li [class.active]="Geral">
+            <a (click)="MudarRotaDash($event.target.text)"><span class="fa fa-home mr-3" ></span> <span *ngIf="Expanded">Geral</span></a>
+          </li>
+          <li [class.active]="Cadastros">
+            <a  (click)="MudarRotaDash($event.target.text)"><span class="fa fa-list-alt mr-3" ></span> <span *ngIf="Expanded" >Cadastros</span></a>
+          </li>
+          <li [class.active]="Eventos">
+            <a  (click)="MudarRotaDash($event.target.text)"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">1</small></span> <span *ngIf="Expanded">Eventos</span></a>
+          </li>
+          <li [class.active]="Configuracoes">
+            <a (click)="MudarRotaDash($event.target.text)"><span class="fa fa-cog mr-3"></span><span *ngIf="Expanded">Configurações</span></a>
+          </li>
+          <li [class.active]="Suporte">
+            <a  (click)="MudarRotaDash($event.target.text)"><span class="fa fa-support mr-3"></span> <span *ngIf="Expanded">Suporte</span></a>
+          </li>
+          <li>
+            <a href="/Home" ><span class=" fa fa-sign-out"></span> <span *ngIf="Expanded">Sair</span></a>
+          </li>
+        </ul>
+      </nav>
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <div *ngIf="Geral">
+          <app-Geral></app-Geral>
+        </div>
+        <div *ngIf="Cadastros">
+          <app-Cadastros> </app-Cadastros>
+        </div>
+        <div *ngIf="Eventos">
+          <app-Eventos> </app-Eventos>
+        </div>
+        <div *ngIf="Configuracoes">
+          <app-Configuracoes> </app-Configuracoes>
+        </div>
+        <div *ngIf="Suporte">
+          <app-Suporte> </app-Suporte>
+        </div>
+      </div>
+    </div>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6cd98018c933d072","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+  </body>

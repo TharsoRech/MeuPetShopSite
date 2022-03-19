@@ -1,0 +1,190 @@
+<select (change)="SelecionarCadastro($event.target.value)" class="browser-default custom-select">
+  <option selected>Selecione o tipo de Cadastro</option>
+  <option value="Animais">Animais</option>
+  <option value="Atendentes">Atendentes</option>
+  <option value="Clientes">Clientes</option>
+  <option value="Eventos">Eventos</option>
+  <option value="Enderecos">Endereços</option>
+  <option value="Tipos">Tipos</option>
+  <option value="Racas">Raças</option>
+</select>
+<br />
+<br />
+<button type="button" class="btn btn-primary" (click)="AddModal()" data-toggle="button" *ngIf="IsSelected" aria-pressed="false" autocomplete="off">
+  Adicionar Novo
+</button>
+<br />
+<br />
+<div id="content">
+  <!--<p *ngIf="!animais"><em>Loading...</em></p>-->
+  <h1 id="TableAnimais" *ngIf="animais">Animais</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="animais">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Pessoa</th>
+        <th>Genero</th>
+        <th>Tipo</th>
+        <th>Raça</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of animais">
+        <td>{{ animal.nome }}</td>
+        <td>{{ animal.pessoa }}</td>
+        <td>{{ animal.genero }}</td>
+        <td>{{ animal.tipo }}</td>
+        <td>{{ animal.raca }}</td>
+        <td>
+          <a (click)="EditModal(animal.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(animal.id)" class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableClientes" *ngIf="clientes">Clientes</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="clientes">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data De Nascimento</th>
+        <th>Cpf</th>
+        <th>Endereço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.dataDeNascimento }}</td>
+        <td>{{ cliente.cpf }}</td>
+        <td>{{ cliente.endereco }}</td>
+        <td>
+          <a (click)="EditModal(cliente.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(cliente.id)" class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableEventos" *ngIf="eventos">Eventos</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="eventos">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Status</th>
+        <th>Atendente</th>
+        <th>Animal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evento of eventos">
+        <td>{{ evento.nome }}</td>
+        <td>{{ evento.status }}</td>
+        <td>{{ evento.atendente }}</td>
+        <td>{{ evento.animal }}</td>
+        <td>
+          <a (click)="EditModal(evento.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(evento.id)" class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableAtendentes" *ngIf="atendentes">Atendentes</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="atendentes">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ultima Alteração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let atendente of atendentes">
+        <td>{{ atendente.nome }}</td>
+        <td>{{ atendente.alteracao }}</td>
+        <td>
+          <a (click)="EditModal(atendente.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(atendente.id)" class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableEnderecos" *ngIf="enderecos">Endereços</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="enderecos">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Cep</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let endereco of enderecos">
+        <td>{{ endereco.pessoa }}</td>
+        <td>{{ endereco.cep }}</td>
+        <td>{{ endereco.cidade }}</td>
+        <td>{{ endereco.estado}}</td>
+        <td>
+          <a (click)="EditModal(endereco.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(endereco.id)"  class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableTipos" *ngIf="tipos">Tipos</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="tipos">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Raca</th>
+        <th>Ultima Alteração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of tipos">
+        <td>{{ tipo.nome }}</td>
+        <td>{{ tipo.raca }}</td>
+        <td>{{ tipo.alteracao }}</td>
+        <td>
+          <a (click)="EditModal(tipo.id)" class="btn btn-primary">Editar</a>
+          <a (click)="ExcluirRegistro(tipo.id)" class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableRacas" *ngIf="racas">Raças</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="racas">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ultima Alteração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let raca of racas">
+        <td>{{ raca.nome }}</td>
+        <td>{{ raca.alteracao }}</td>
+        <td>
+          <a (click)="EditModal(raca.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(raca.id)"  class="btn btn-primary">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{Titulo}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <app-AdicionarModal  [SelectAdd]="this.CadastroNome" *ngIf="Adicionar" ></app-AdicionarModal>
+        <app-EditarModal [SelectEdit]="this.CadastroNome" [Id] ="this.SeletcId"  *ngIf="Editar"></app-EditarModal>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

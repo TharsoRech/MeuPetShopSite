@@ -1,0 +1,36 @@
+<div class="card m-3">
+  <h5 class="card-header">Formulário de Cliente</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-5">
+          <label>Nome:</label>
+          <input type="text" formControlName="Nome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Nome.errors }" />
+          <div *ngIf="submitted && f.Nome.errors" class="invalid-feedback">
+            <div *ngIf="f.Nome.errors.required">O Nome é requerido</div>
+          </div>
+        </div>
+        <div class="form-group col-5">
+          <label>Assunto:</label>
+          <textarea formControlName="Assunto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Assunto.errors }"></textarea>
+          <div *ngIf="submitted && f.Assunto.errors" class="invalid-feedback">
+            <div *ngIf="f.Assunto.errors.required">O Assunto é Requerido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">O Email é requerido</div>
+          <div *ngIf="f.email.errors.email">O Email tem que ser válido</div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary mr-1">Enviar Mensagem</button>
+        <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpar Campos</button>
+      </div>
+    </form>
+  </div>
+</div>
+

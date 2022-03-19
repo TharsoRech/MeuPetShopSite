@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+  margin:5px;
+}
+.container{
+    margin:0;
+    padding:0;
+}
+
+.navbar-brand{
+  margin-left: 12%;
+}
+
+
+.table {
+    width:max-content;
+}
+.modal {
+  background: rgba(0,0,0, .5);
+  overflow: auto;
+}
+.card {
+  width: 70%;
+}
+
+.FormClass {
+  display: flex;
+}
+
+.modal-dialog {
+  max-width: max-content;
+  margin: 1.75rem auto;
+}
+.img-fluid{
+    opacity:0.5;
+}
