@@ -44,14 +44,14 @@ export class TiposForm implements OnInit {
       tipo1.id = this.Id,
         tipo1.nome = this.registerForm.controls["Nome"].value,
         tipo1.alteracao = null,
-        this.tiposervice.AlterarTipo(this.Id, JSON.stringify(tipo1)).subscribe(result => { alert('Atendente Alterado com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
+        this.tiposervice.AlterarTipo(this.Id, JSON.stringify(tipo1)).subscribe(result => { alert('Tipo de Animal Alterado com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
     }
     else {
       var tipo1 = new Tipo()
       tipo1.id = "00000000-0000-0000-0000-000000000000",
         tipo1.nome = this.registerForm.controls["Nome"].value,
         tipo1.alteracao = null,
-        this.tiposervice.IncluirTipo(tipo1).subscribe(result => { alert('Atendente Incluido com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
+        this.tiposervice.IncluirTipo(tipo1).subscribe(result => { alert('Tipo de Animal Incluido com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
     }
     this.submitted = true;
 

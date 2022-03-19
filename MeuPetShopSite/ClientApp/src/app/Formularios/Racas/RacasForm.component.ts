@@ -44,7 +44,7 @@ export class RacasForm implements OnInit {
       raca1.id = this.Id,
         raca1.nome = this.registerForm.controls["Nome"].value,
         raca1.alteracao = null,
-        this.racaservice.AlterarRaca(this.Id, JSON.stringify(raca1)).subscribe(result => { alert('Atendente Alterado com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
+        this.racaservice.AlterarRaca(this.Id, JSON.stringify(raca1)).subscribe(result => { alert('Raça Alterada com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
 
     }
     else {
@@ -52,7 +52,7 @@ export class RacasForm implements OnInit {
       raca1.id = "00000000-0000-0000-0000-000000000000",
         raca1.nome = this.registerForm.controls["Nome"].value,
         raca1.alteracao = null,
-        this.racaservice.IncluirRaca(raca1).subscribe(result => { alert('Atendente Incluido com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
+        this.racaservice.IncluirRaca(raca1).subscribe(result => { alert('Raça Incluida com sucesso'); }, error => alert(JSON.stringify(error, null, 10)))
     }
     this.submitted = true;
 
