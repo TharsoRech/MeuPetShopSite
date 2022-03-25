@@ -12,6 +12,16 @@
             <div *ngIf="f.Nome.errors.required">O Nome é requerido</div>
           </div>
         </div>
+        <div class="form-group col-12">
+          <label>Raça do Animal</label>
+          <select formControlName="Raca" class="form-control">
+            <option disabled>Selecionar o Tipo de Raça</option>
+            <option *ngFor="let raca of Racas" value="{{raca.id}}">{{raca.nome}}</option>
+          </select>
+          <div *ngIf="submitted && f.Tipo.errors" class="invalid-feedback">
+            <div *ngIf="f.Tipo.errors.required">O Tipo de animal é requerido</div>
+          </div>
+        </div>
       </div>
       <div class="text-center">
         <button class="btn btn-primary mr-1">Salvar</button>

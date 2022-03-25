@@ -33,6 +33,8 @@ import { EnderecosForm } from './Formularios/Enderecos/EnderecosForm.component';
 import { EventosForm } from './Formularios/Eventos/EventosForm.component';
 import { TiposForm } from './Formularios/Tipos/TiposForm.component';
 import { RacasForm } from './Formularios/Racas/RacasForm.component';
+import { MyDatePickerModule } from 'mydatepicker';
+
 
 @NgModule({
   declarations: [
@@ -58,13 +60,15 @@ import { RacasForm } from './Formularios/Racas/RacasForm.component';
     EnderecosForm,
     EventosForm,
     TiposForm,
-    RacasForm
+    RacasForm,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MyDatePickerModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'Cadastros', component: CadastrosComponent },

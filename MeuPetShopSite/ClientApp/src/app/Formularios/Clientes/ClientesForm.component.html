@@ -12,19 +12,14 @@
         </div>
         <div class="form-group col-5">
           <label>Data de Nascimento:</label>
-          <div class='input-group date' id='datetimepicker3' formControlName="DataNascimento">
-            <input type='date' class="form-control" />
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time"></span>
-            </span>
-          </div>
+          <my-date-picker name="reactiveFormsDate" [options]="DataNascimentoPickerOptions" formControlName="DataNascimento"></my-date-picker>
           <div *ngIf="submitted && f.DataNascimento.errors" class="invalid-feedback">
             <div *ngIf="f.DataNascimento.errors.required">A data de Nascimento é Requerida</div>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label>Email</label>
+        <label>Cpf</label>
         <input type="text" formControlName="Cpf" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.Cpf.errors" class="invalid-feedback">
           <div *ngIf="f.Cpf.errors.required">O Cpf é requerido</div>
@@ -32,58 +27,59 @@
         </div>
       </div>
       <div class="text-center">
-        <button class="btn btn-primary mr-1">Enviar Mensagem</button>
+        <button class="btn btn-primary mr-1">Salvar</button>
         <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpar Campos</button>
       </div>
     </form>
   </div>
 </div>
-<h1 id="TableEnderecos" *ngIf="endereco">Endereços</h1>
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="enderecos">
-  <thead>
-    <tr>
-      <th>Cliente</th>
-      <th>Cep</th>
-      <th>Cidade</th>
-      <th>Estado</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ endereco.pessoa }}</td>
-      <td>{{ endereco.cep }}</td>
-      <td>{{ endereco.cidade }}</td>
-      <td>{{ endereco.estado}}</td>
-      <td>
-        <a class="btn btn-primary">Detalhes/Editar</a>
-        <a class="btn btn-primary">Deletar</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<h1 id="TableAnimais" *ngIf="animais">Animais</h1>
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="animais">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Pessoa</th>
-      <th>Genero</th>
-      <th>Tipo</th>
-      <th>Raça</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let animal of animais">
-      <td>{{ animal.nome }}</td>
-      <td>{{ animal.pessoa }}</td>
-      <td>{{ animal.genero }}</td>
-      <td>{{ animal.tipo }}</td>
-      <td>{{ animal.raca }}</td>
-      <td>
-        <a class="btn btn-primary">Detalhes/Editar</a>
-        <a class="btn btn-primary">Deletar</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+<div class="card-header">
+  <h1 id="TableEnderecos" *ngIf="endereco">Endereços</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="endereco">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Cep</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ endereco.pessoa }}</td>
+        <td>{{ endereco.cep }}</td>
+        <td>{{ endereco.cidade }}</td>
+        <td>{{ endereco.estado}}</td>
+        <td>
+          <a class="btn btn-primary">Detalhes/Editar</a>
+          <a class="btn btn-primary">Remover</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 id="TableAnimais" *ngIf="animais">Animais</h1>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="animais">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Pessoa</th>
+        <th>Genero</th>
+        <th>Tipo</th>
+        <th>Raça</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of animais">
+        <td>{{ animal.nome }}</td>
+        <td>{{ animal.pessoa }}</td>
+        <td>{{ animal.genero }}</td>
+        <td>{{ animal.tipo }}</td>
+        <td>{{ animal.raca }}</td>
+        <td>
+          <a class="btn btn-primary">Detalhes/Editar</a>
+          <a class="btn btn-primary">Remover</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -7,7 +7,7 @@ import { Cliente } from '../../Clientes/Clientes';
 import { ClienteService } from '../../Clientes/Clientes.service';
 import { Endereco } from '../../Enderecos/Enderecos';
 import { EnderecoService } from '../../Enderecos/Enderecos.service';
-
+import { IMyDpOptions } from 'mydatepicker';
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from '../../Helpers/must-match.validator';
 
@@ -20,24 +20,51 @@ export class ClientesForm implements OnInit {
   Alteracao: string;
   endereco: Endereco;
   animais: Animal[];
+  public DataNascimentoPickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd.mm.yyyy',
+  };
+
+  setDate(date:Date): void {
+    // Set today date using the patchValue function
+    this.registerForm.patchValue({
+      DataNascimento: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() +1,
+          day: date.getDate() +1
+        }
+      }
+    });
+  }
+
+  clearDate(): void {
+    // Clear the date using the patchValue function
+    this.registerForm.patchValue({ DataNascimento: null });
+  }
 
   constructor(private formBuilder: FormBuilder, private clienteservice: ClienteService,private enderecoservice: EnderecoService,private animalservice: AnimalService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       Nome: ['', Validators.required],
-      DataNascimento: ['', Validators.required],
+      DataNascimento: [null, Validators.required],
       Cpf: ['', Validators.required],
     }, {
     });
     if (this.Editar == true) {
       this.clienteservice.ObterCliente(this.Id).subscribe(cliente => {
         this.registerForm.get("Nome").setValue(cliente.nome, { emitEvent: false });
-        this.registerForm.get("DataNascimento").setValue(cliente.datadenascimento, { emitEvent: false });
+        var data = new Date(cliente.dataDeNascimento);
+        this.setDate(data);
         this.registerForm.get("Cpf").setValue(cliente.cpf, { emitEvent: false });
         if (cliente.endereco != null) {
-          this.enderecoservice.ObterEndereco(cliente.endereco).subscribe(enderecos => { this.endereco = enderecos; }, error => console.log(error))
+          this.enderecoservice.ObterEndereco(cliente.endereco).subscribe(enderecos => {
+            this.endereco = enderecos;
+          }, error => console.log(error))
         }
+        console.log(this.endereco);
+        console.log(cliente.endereco);
         if (cliente.animais != null && cliente.animais.length > 0) {
           this.animais = [];
           var i;

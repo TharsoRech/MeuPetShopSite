@@ -49,7 +49,6 @@
         <th>Nome</th>
         <th>Data De Nascimento</th>
         <th>Cpf</th>
-        <th>Endereço</th>
       </tr>
     </thead>
     <tbody>
@@ -57,7 +56,6 @@
         <td>{{ cliente.nome }}</td>
         <td>{{ cliente.dataDeNascimento }}</td>
         <td>{{ cliente.cpf }}</td>
-        <td>{{ cliente.endereco }}</td>
         <td>
           <a (click)="EditModal(cliente.id)" class="btn btn-primary">Detalhes/Editar</a>
           <a (click)="ExcluirRegistro(cliente.id)" class="btn btn-primary">Deletar</a>
@@ -145,8 +143,8 @@
         <td>{{ tipo.raca }}</td>
         <td>{{ tipo.alteracao }}</td>
         <td>
-          <a (click)="EditModal(tipo.id)" class="btn btn-primary">Editar</a>
-          <a (click)="ExcluirRegistro(tipo.id)" class="btn btn-primary">Deletar</a>
+          <a (click)="EditModal(tipo.id)" class="btn btn-primary">Detalhes/Editar</a>
+          <a (click)="ExcluirRegistro(tipo.id)" class="btn btn-primary">Detalhes/Editar</a>
         </td>
       </tr>
     </tbody>

@@ -5,6 +5,7 @@ export class Tipo {
   nome: string;
   raca: string;
   alteracao: string;
+  racaId: string;
 
   }
 

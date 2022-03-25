@@ -3,7 +3,7 @@
 export class Cliente {
   id: string;
   nome: string;
-  datadenascimento: string;
+  dataDeNascimento: string;
   cpf: string;
   animais: [];
   endereco: string;
