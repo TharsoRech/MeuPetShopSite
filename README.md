@@ -1,2 +1,2 @@
 # MeuPetShopSite
-Sistema web  de petshop em angular 8 consumindo api do projeot "MeuPetShop"
+Petshop web system in Angular 8 consuming api from "MeuPetShop" project
